@@ -5,6 +5,12 @@ import Navbar from "../components/Navbar";
 import Image from "next/image";
 
 export default function about() {
+
+  const scrollToElement = () => {
+    const element = document.getElementById("appointment");
+    element.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  };
+
   return (
     <Layout>
       <Navbar />
@@ -26,7 +32,7 @@ export default function about() {
             />
           </div>
           <p className="font-semibold text-center">JOHN DOE THE DOC</p>
-          <p className="px-4 md:px-6 pt-2 pb-16">
+          <p className="px-4 md:px-6 pt-2 pb-8">
             Lord Ipsum ut hendrerit metus nibh, eget rutrum risus varius quis.
             Proin vel augue aliquam, luctus risus sit amet, sollicitudin velit.
             Nulla nisi lord, ultricies a metus ac, ornare suscipit enim. Proin
@@ -53,6 +59,9 @@ export default function about() {
             ornare enim, a dapibus turpis. Curabitur congue lord a eros
             lobortis, non iaculis est rhoncus. Pellentesque imperdiet ipsum ac
             ornare malesuada.
+          </p>
+          <p className="text-center py-4 pb-8">
+            <button onClick={scrollToElement} className="border-2 w-11/12 bg-sky-400 border-sky-400 text-white hover:bg-white hover:text-black rounded-l-full rounded-r-full p-2 px-4 mx-auto font-bold">REQUEST AN APPOINTMENT</button>
           </p>
         </div>
         <div className="self-bottom">

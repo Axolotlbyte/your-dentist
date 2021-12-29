@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  
   const [rotate, setRotate] = useState(true);
   const navItems = [
     { name: "SERVICES", link: "/services" },
@@ -30,22 +31,36 @@ export default function Home() {
   // },[])
 
   const serviceItems = [
-    { name: "MEET THE DOCTOR", src: "/icons/dentist.svg", h: 100, w: 100 },
-    { name: "SERVICES", src: "/icons/services.svg", h: 100, w: 100 },
-    { name: "BEFORE & AFTER", src: "/icons/before-after.svg", h: 100, w: 100 },
+    {
+      name: "MEET THE DOCTOR",
+      src: "/icons/dentist.svg",
+      h: 100,
+      w: 100,
+      href: "/about",
+    },
+    { name: "SERVICES", src: "/icons/services.svg", h: 100, w: 100, href: "/services" },
+    {
+      name: "BEFORE & AFTER",
+      src: "/icons/before-after.svg",
+      h: 100,
+      w: 100,
+      href: "/before-after",
+    },
     {
       name: "EXPERIENCED & FRIENDLY STAFF",
       src: "/icons/chatting-talk.svg",
       h: 100,
       w: 100,
+      href: "/",
     },
     {
       name: "GREAT COSTUMER SERVICE",
       src: "/icons/customer-service.svg",
       h: 100,
       w: 100,
+      href: "/",
     },
-    { name: "FAQ", src: "/icons/faq.svg", h: 100, w: 100 },
+    { name: "FAQ", src: "/icons/faq.svg", h: 100, w: 100, href: "/faq" },
   ];
 
   const copyToClipBoard = () => {
@@ -146,7 +161,7 @@ export default function Home() {
             href="https://www.google.ca/maps/search/++++++++++++3483+Red+Hawk+Road,+Kensington,+Minnesota/@45.7779592,-95.7066502,15z/data=!3m1!4b1"
             className="flex items-center absolute right-2 bottom-2"
           >
-            <span className="text-sm px-2 bg-black bg-opacity-30 rounded-l-full">
+            <span className="text-sm px-2 bg-black text-white bg-opacity-40 rounded-l-full">
               3483 Red Hawk Road, Kensington, Minnesota
             </span>
             <span>
@@ -248,18 +263,17 @@ export default function Home() {
         <div className="grid gap-4 w-11/12 mx-auto gap-y-12 my-14 text-center mt-16 md:grid-cols-2 lg:grid-cols-3 ">
           {serviceItems.map((item) => {
             return (
-              <div
-                key={item.name}
-                className="cursor-pointer hover:scale-105 transition-transform rounded-lg p-4 border-slate-400 shadow-md"
-              >
-                <Image
-                  src={item.src}
-                  height={item.h}
-                  width={item.w}
-                  alt={item.name}
-                />
-                <p className="font-semibold">{item.name}</p>
-              </div>
+              <Link key={"item.name"} href={item.href}>
+                <a className="cursor-pointer hover:scale-105 transition-transform rounded-lg p-4 border-slate-400 shadow-md">
+                  <Image
+                    src={item.src}
+                    height={item.h}
+                    width={item.w}
+                    alt={item.name}
+                  />
+                  <p className="font-semibold">{item.name}</p>
+                </a>
+              </Link>
             );
           })}
         </div>

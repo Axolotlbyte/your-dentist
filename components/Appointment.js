@@ -1,5 +1,9 @@
 // import Script from "next/script";
 import Image from "next/image";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Appointment() {
   // function initMap() {
   //     // The location of Uluru
@@ -16,6 +20,55 @@ export default function Appointment() {
   //       map: map,
   //     });
   // }
+  const [data,setData] = useState({
+    name: "",
+    contact: "",
+    email: "",
+    message: ""
+  })
+
+  const handleSubmit = () => {
+    if(
+        data.name === "" || data.name === null
+        || data.contact === "" || data.contact === null
+        || data.email === "" || data.email === null
+        ){
+          toast.error("Fill All The Required Details!", {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }else{
+          setData({
+            name: "",
+            contact: "",
+            email: "",
+            message: ""
+          })
+          toast.success("Appointment Request Successfully Sent!", {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          toast.success("We Will Be Contacting You Soon!", {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+  }
 
   return (
     <div className="flex flex-col md:flex-row border-t-2 border-t-slate-500 py-2 bg-black p-4">
@@ -28,27 +81,38 @@ export default function Appointment() {
           className="w-11/12 mx-auto p-2 my-2 rounded ring-2 ring-sky-500 "
           id="name"
           placeholder="Name"
+          value={data.name}
+          onChange={e => setData({...data,name: e.target.value})}
         />
         <input
           type="text"
           className="w-11/12 mx-auto p-2 my-2 rounded ring-2 ring-sky-500 "
           id="contact"
           placeholder="Contact"
+          value={data.contact}
+          onChange={e => setData({...data,contact: e.target.value})}
         />
+
         <input
           type="email"
           className="w-11/12 mx-auto p-2 my-2 rounded ring-2 ring-sky-500 "
           id="email"
           placeholder="Email"
+          value={data.email}
+          onChange={e => setData({...data,email: e.target.value})}
         />
+
         <textarea
           id="message"
           className="w-11/12 mx-auto p-2 my-2 rounded ring-2 ring-sky-500 "
           placeholder="Message / Query"
+          value={data.message}
+          onChange={e => setData({...data,message: e.target.value})}
         />
         <button
           type="submit"
           className="bg-sky-500 w-11/12 my-2 mx-auto font-semibold text-white py-1 rounded"
+          onClick={handleSubmit}
         >
           SUBMIT
         </button>
@@ -71,6 +135,17 @@ export default function Appointment() {
           />
         </a>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <style jsx>{``}</style>
     </div>
   );

@@ -15,12 +15,21 @@ export default function beforeAfter() {
     { id: 7, src: "/before-after/7.png" },
     { id: 8, src: "/before-after/8.png" },
   ];
+
+  const scrollToElement = () => {
+    const element = document.getElementById("appointment");
+    element.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  };
+
   return (
     <Layout>
       <Navbar />
       <div className="h-auto pt-16 w-full">
-        <p className="text-3xl py-16 text-center mt-2 font-semibold">
+        <p className="text-3xl pt-10 pb-6 text-center mt-2 font-semibold">
           BEFORE & AFTER IMAGES
+        </p>
+        <p className="text-center pb-2">
+          <button onClick={scrollToElement} className="border-2 bg-sky-400 border-sky-400 text-white hover:bg-white hover:text-black rounded-l-full rounded-r-full p-2 px-4 mx-auto font-bold">REQUEST AN APPOINTMENT</button>
         </p>
         <section className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 w-11/12 mx-auto h-auto ">
           {imageArr.map((item) => {

@@ -70,10 +70,11 @@ export default function Services() {
                   />
                 </div>
               </div>
-              <div className="px-4 md:text-base text-sm">
-                <p className="text-lg font-semibold">{item.name}</p>
+              <div className="px-4 md:text-base text-sm pb-2">
+                <p className="text-lg font-semibold ">{item.name}</p>
                 {item.desc}
               </div>
+              <button onClick={scrollToElement} className="p-2 border-2 border-collapse font-bold text-white bg-sky-400">REQUEST AN APPOINTMENT</button>
             </div>
           );
         })}

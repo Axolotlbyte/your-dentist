@@ -34,7 +34,7 @@ export default function Layout({ children }) {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://www.twitter.com/"
+              href="https://www.instagram.com/"
               className="flex justify-center items-center"
             >
               <svg
